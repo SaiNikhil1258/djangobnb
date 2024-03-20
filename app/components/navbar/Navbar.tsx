@@ -16,6 +16,7 @@ const Navbar = () => {
               alt="Django BnB"
               width={180}
               height={38}
+              // layout="fill"
             ></Image>
           </Link>
           <div className="flex space-x-6">
