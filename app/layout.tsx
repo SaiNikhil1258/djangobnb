@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 
 import LoginModal from "./components/modals/LoginModal";
 import SignupModal from "./components/modals/SignUpModal";
+import AddPropertyModal from "./components/modals/AddPropertyModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
         {/* <Modal label="Modal-text" content={content} isOpen={false}  /> */}
         <LoginModal />
         <SignupModal />
+        <AddPropertyModal />
       </body>
     </html>
   );
