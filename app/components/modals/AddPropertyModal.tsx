@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 const AddPropertyModal = () => {
   // states
   const [currentStep, setCurrentStep] = useState(1);
+  const [errors, setErrors] = useState<string[]>([]);
   const [dataCategory, setDataCategory] = useState("");
   const [dataTitle, setDataTitle] = useState("");
   const [dataDescription, setDataDescription] = useState("");
@@ -70,7 +71,13 @@ const AddPropertyModal = () => {
         router.push("/");
         AddPropertyModal.close();
       } else {
-        console.log("error");
+        console.log("Error");
+        const tmpErrors: string[] = Object.values(response).map(
+          (error: any) => {
+            return error;
+          }
+        );
+        setErrors(tmpErrors);
       }
     }
   };
@@ -199,12 +206,22 @@ const AddPropertyModal = () => {
               </div>
             )}
           </div>
+          {errors.map((error, index) => {
+            return (
+              <div
+                key={index}
+                className="p-5 mb-4 bg-airbnb text-white rounded-xl opacity-80"
+              >
+                {error}
+              </div>
+            );
+          })}
           <CustomButton
             label="Previous"
             className="mb-2 bg-black hover:bg-gray-800"
             onClick={() => setCurrentStep(4)}
           />
-          <CustomButton label="Submit" onClick={() => setCurrentStep(5)} />
+          <CustomButton label="Submit" onClick={submitForm} />
         </>
       )}
     </>
